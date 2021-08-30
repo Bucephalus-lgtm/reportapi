@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const reportSchema = new mongoose.Schema(
     {
-        reportDetails: {
+        reportDetails: [{
             userId: {
                 type: String
             },
@@ -30,7 +30,7 @@ const reportSchema = new mongoose.Schema(
             price: {
                 type: Number
             }
-        }
+        }]
     },
     { timestamps: true }
 );
