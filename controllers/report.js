@@ -21,6 +21,8 @@ exports.create_report = async (req, res) => {
 exports.get_report = async (req, res) => {
     try {
         const reportId = req.query.reportId;
+        const r = await Report.find({});
+        console.log({ r }); //612d34906461c3a7b2d44e98
         const report = await Report.findById(reportId);
 
         const users = [];
