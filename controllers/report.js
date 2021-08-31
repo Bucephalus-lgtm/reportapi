@@ -11,10 +11,10 @@ exports.create_report = async (req, res) => {
             }]
         });
         await report.save();
-        return res.json({ status: "success", reportID: report._id });
+        return res.sendStatus(200).send({ status: "success", reportID: report._id });
     } catch (err) {
         console.error(err.message);
-        return res.json({ err: err.message });
+        return res.sendStatus(500).send({ err: err.message });
     }
 };
 
@@ -34,7 +34,7 @@ exports.get_report = async (req, res) => {
             price += reportDetails.price / reportDetails.convFctr;
         }
         price = price / reportDetails.length;
-        return res.json({
+        return res.sendStatus(200).send({
             _id: reportId,
             cmdtyID: report.cmdtyID,
             cmdtyName: report.cmdtyName,
@@ -47,6 +47,6 @@ exports.get_report = async (req, res) => {
         });
     } catch (err) {
         console.error(err.message);
-        return res.json({ err: err.message });
+        return res.sendStatus(500).send({ err: err.message });
     }
 }
